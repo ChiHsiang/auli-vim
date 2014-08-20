@@ -44,6 +44,9 @@ Bundle 'gmarik/vundle'
 
   Bundle 'opengl.vim'
 
+  Bundle 'JulesWang/css.vim'
+  Bundle 'cakebaker/scss-syntax.vim'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
@@ -79,6 +82,7 @@ set fileencoding=utf-8
 " status Line
 set laststatus=2
 
+" vim code Fold
 
 " --- vim-gitgutter
 let g:gitgutter_enabled = 1
