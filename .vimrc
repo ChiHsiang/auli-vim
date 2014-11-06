@@ -47,6 +47,8 @@ Bundle 'gmarik/vundle'
   Bundle 'JulesWang/css.vim'
   Bundle 'cakebaker/scss-syntax.vim'
 
+  Bundle 'bling/vim-airline'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
