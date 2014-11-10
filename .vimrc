@@ -48,6 +48,7 @@ Bundle 'gmarik/vundle'
   Bundle 'cakebaker/scss-syntax.vim'
 
   Bundle 'bling/vim-airline'
+  Bundle 'kchmck/vim-coffee-script'
 
 " General
 
@@ -115,4 +116,7 @@ endfunc
 " --- indentLine
 let g:indentLine_color_term = 239
 
+" --- vim-coffee-script
+
+syntax enable
 
