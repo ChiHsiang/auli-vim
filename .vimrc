@@ -1,7 +1,7 @@
 " Vundle
 
 set nocompatible	" not compatible with the old-fashion vi mode"
-filetype off		" required!
+filetype off " required!
 
 " Setting up vundle - the vim plugin bundler
 
@@ -51,7 +51,6 @@ Bundle 'gmarik/vundle'
   Bundle 'kchmck/vim-coffee-script'
 
   Bundle 'moll/vim-node'
-  Bundle 'pangloss/vim-javascript'
 
 " General
 
@@ -64,9 +63,11 @@ set autoindent		  " enable autoindent
 set expandtab		  " use space instead of tab
 set tabstop=2		  " insert 2 spaces for a tab
 set shiftwidth=2	  " the number of space characters inserted for indentation
-syntax on		  " enable syntax hightlighting
-colors Tomorrow-Night-Bright " vim color scheme
+syntax on	  " enable syntax hightlighting
+colorscheme Tomorrow-Night-Eighties
 set autoread		  " auto read when file is change from outside
+set noswapfile    " don't produce .swp 
+
 
 if has("gui_running")     " GUI color and font settings
   set t_Co=256            " 256 color mode
@@ -118,5 +119,6 @@ endfunc
 
 " --- indentLine
 let g:indentLine_color_term = 239
+
 
 
