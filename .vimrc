@@ -119,7 +119,4 @@ endfunc
 " --- indentLine
 let g:indentLine_color_term = 239
 
-" --- vim-coffee-script
-
-syntax enable
 
