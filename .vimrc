@@ -50,6 +50,9 @@ Bundle 'gmarik/vundle'
   Bundle 'bling/vim-airline'
   Bundle 'kchmck/vim-coffee-script'
 
+  Bundle 'moll/vim-node'
+  Bundle 'pangloss/vim-javascript'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
