@@ -121,4 +121,6 @@ endfunc
 let g:indentLine_color_term = 239
 
 
+" ---set File type tab space
 
+autocmd FileType java,javascript set tabstop=4|set shiftwidth=4|set expandtab
