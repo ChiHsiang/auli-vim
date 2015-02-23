@@ -20,37 +20,38 @@ call vundle#rc()
 
 " Let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+  Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
 
-  Bundle 'plasticboy/vim-markdown'
-  Bundle 'Lokaltog/vim-easymotion'
-  Bundle 'airblade/vim-gitgutter'
-  Bundle "MarcWeber/vim-addon-mw-utils"
-  Bundle "tomtom/tlib_vim"
-  Bundle 'Townk/vim-autoclose'
-  Bundle 'kien/ctrlp.vim'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'majutsushi/tagbar'
-  Bundle 'tomtom/tcomment_vim'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'honza/vim-snippets'
-  Bundle 'garbas/vim-snipmate'
-  Bundle 'L9'
-  Bundle 'Yggdroot/indentLine'
+  Plugin 'plasticboy/vim-markdown'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'MarcWeber/vim-addon-mw-utils'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'Townk/vim-autoclose'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'honza/vim-snippets'
+  Plugin 'garbas/vim-snipmate'
+  Plugin 'L9'
+  Plugin 'Yggdroot/indentLine'
 
-  Bundle 'opengl.vim'
+  Plugin 'opengl.vim'
 
-  Bundle 'JulesWang/css.vim'
-  Bundle 'cakebaker/scss-syntax.vim'
+  Plugin 'JulesWang/css.vim'
+  Plugin 'cakebaker/scss-syntax.vim'
 
-  Bundle 'bling/vim-airline'
-  Bundle 'kchmck/vim-coffee-script'
+  Plugin 'bling/vim-airline'
+  Plugin 'kchmck/vim-coffee-script'
 
-  Bundle 'moll/vim-node'
+  Plugin 'moll/vim-node'
+  Plugin 'hallettj/jslint.vim'
 
 " General
 
