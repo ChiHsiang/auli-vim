@@ -53,6 +53,8 @@ call vundle#rc()
   Plugin 'moll/vim-node'
   Plugin 'hallettj/jslint.vim'
 
+  Plugin 'elzr/vim-json'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
@@ -125,3 +127,7 @@ let g:indentLine_color_term = 239
 " ---set File type tab space
 
 autocmd FileType java,javascript set tabstop=4|set shiftwidth=4|set expandtab
+
+" ---set json-vim
+
+let g:vim_json_syntax_conceal = 0
