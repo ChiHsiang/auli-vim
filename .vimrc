@@ -131,3 +131,8 @@ autocmd FileType java,javascript set tabstop=4|set shiftwidth=4|set expandtab
 " ---set json-vim
 
 let g:vim_json_syntax_conceal = 0
+
+" ---set search highlight
+
+set hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
