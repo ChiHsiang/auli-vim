@@ -39,7 +39,6 @@ call vundle#rc()
   Plugin 'tpope/vim-fugitive'
   Plugin 'honza/vim-snippets'
   Plugin 'garbas/vim-snipmate'
-  Plugin 'L9'
   Plugin 'Yggdroot/indentLine'
 
   Plugin 'opengl.vim'
@@ -54,6 +53,7 @@ call vundle#rc()
   Plugin 'hallettj/jslint.vim'
 
   Plugin 'elzr/vim-json'
+  Plugin 'tpope/vim-surround'
 
 " General
 
@@ -136,3 +136,7 @@ let g:vim_json_syntax_conceal = 0
 
 set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" ---set quitfix map
+map <C-j> <ESC>:cnext<CR>
+map <C-k> <ESC>:cprev<CR>
