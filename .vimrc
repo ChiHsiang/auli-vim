@@ -44,13 +44,13 @@ call vundle#rc()
   Plugin 'opengl.vim'
 
   Plugin 'JulesWang/css.vim'
-  Plugin 'cakebaker/scss-syntax.vim'
+  "Plugin 'cakebaker/scss-syntax.vim'
 
   Plugin 'bling/vim-airline'
-  Plugin 'kchmck/vim-coffee-script'
+  "Plugin 'kchmck/vim-coffee-script'
 
   Plugin 'moll/vim-node'
-  Plugin 'hallettj/jslint.vim'
+  "Plugin 'hallettj/jslint.vim'
 
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-surround'
@@ -126,7 +126,7 @@ let g:indentLine_color_term = 239
 
 " ---set File type tab space
 
-autocmd FileType java,javascript set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab
 
 " ---set json-vim
 
@@ -140,3 +140,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " ---set quitfix map
 map <C-j> <ESC>:cnext<CR>
 map <C-k> <ESC>:cprev<CR>
+
+" jslint
+let g:JSLintHighlightErrorLine = 0
