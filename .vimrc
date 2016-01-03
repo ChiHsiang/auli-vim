@@ -54,6 +54,7 @@ call vundle#rc()
 
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-surround'
+  Plugin 'Valloric/YouCompleteMe'
 
 " General
 
