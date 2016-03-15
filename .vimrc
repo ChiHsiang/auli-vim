@@ -54,7 +54,7 @@ call vundle#rc()
 
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-surround'
-  Plugin 'Valloric/YouCompleteMe'
+  "Plugin 'Valloric/YouCompleteMe'
 
 " General
 
@@ -128,6 +128,7 @@ let g:indentLine_color_term = 239
 " ---set File type tab space
 
 autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab
 
 " ---set json-vim
 
@@ -144,3 +145,7 @@ map <C-k> <ESC>:cprev<CR>
 
 " jslint
 let g:JSLintHighlightErrorLine = 0
+
+" ---set youcompleteme
+
+"let g:ycm_key_list_select_completion = ['<Down>', '<C-N>']
