@@ -56,6 +56,8 @@ call vundle#rc()
   Plugin 'tpope/vim-surround'
   "Plugin 'Valloric/YouCompleteMe'
 
+  Plugin 'terryma/vim-multiple-cursors'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
@@ -80,6 +82,7 @@ end
 set clipboard=unnamed     " yank to the system register (*) by default
 set showmode		  " Show current mode
 set backspace=2		  " make backspace work Like most other apps
+set cursorline
 
 
 " open NerdTree with <F5> 
