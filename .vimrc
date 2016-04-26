@@ -1,3 +1,4 @@
+
 " Vundle
 
 set nocompatible	" not compatible with the old-fashion vi mode"
@@ -83,6 +84,7 @@ set clipboard=unnamed     " yank to the system register (*) by default
 set showmode		  " Show current mode
 set backspace=2		  " make backspace work Like most other apps
 set cursorline
+set showmatch " Auto pair find brackets
 
 
 " open NerdTree with <F5> 
@@ -97,6 +99,8 @@ set fileencoding=utf-8
 set laststatus=2
 
 " vim code Fold
+let mapleader = ","
+let g:ctrlp_map = '<Leader>.'
 
 " --- vim-gitgutter
 let g:gitgutter_enabled = 1
@@ -149,6 +153,23 @@ map <C-k> <ESC>:cprev<CR>
 " jslint
 let g:JSLintHighlightErrorLine = 0
 
+" ---set easymontion ex: nmap s <Plug>(easymotion-s)
+map  / <Plug>(easymotion-sn)
+map  n <Plug>(easymotion-next)
+map  m <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s2)
+
 " ---set youcompleteme
 
 "let g:ycm_key_list_select_completion = ['<Down>', '<C-N>']
+
+" Allow us to use Ctrl-s and Ctrl-q as keybinds
+silent !stty -ixon
+
+" -- set person mapping use mac
+inoremap jk <ESC>
+noremap <C-a> ggVG
+noremap <C-s> :wq<CR> :echo "Saved"<CR>
+inoremap <expr> n ((pumvisible())?("\<C-n>"):("n"))
+inoremap <expr> m ((pumvisible())?("\<C-p>"):("m"))
+
