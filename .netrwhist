@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/Hsiang/.sdconv'
-let g:netrw_dirhist_2='/Users/Hsiang/projects/groupme/app'
-let g:netrw_dirhist_3='/Users/Hsiang/projects/groupme/app/views'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/Hsiang/.vim'
+let g:netrw_dirhist_2='/Users/Hsiang/.vim/bundle'
+let g:netrw_dirhist_3='/Users/Hsiang/.vim/bundle/YouCompleteMe'
+let g:netrw_dirhist_4='/Users/Hsiang/.vim/bundle/YouCompleteMe/autoload'
+let g:netrw_dirhist_5='/Users/Hsiang/.vim'
+let g:netrw_dirhist_6='/Users/Hsiang/.vim/.git'
+let g:netrw_dirhist_7='/Users/Hsiang/.vim'

@@ -1,4 +1,3 @@
-
 " Vundle
 
 set nocompatible	" not compatible with the old-fashion vi mode"
@@ -34,7 +33,6 @@ call vundle#rc()
   Plugin 'tomtom/tlib_vim'
   Plugin 'Townk/vim-autoclose'
   Plugin 'kien/ctrlp.vim'
-  Plugin 'scrooloose/nerdtree'
   Plugin 'majutsushi/tagbar'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-fugitive'
@@ -86,10 +84,6 @@ set backspace=2		  " make backspace work Like most other apps
 set cursorline
 set showmatch " Auto pair find brackets
 
-
-" open NerdTree with <F5> 
-map <F5> :NERDTreeToggle<CR>
-
 " encoding settings
 set encoding=utf-8
 set termencoding=utf-8
@@ -117,6 +111,21 @@ let g:ctrlp_show_hidden = 1
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldevel=1
 let g:vim_markdown_no_default_key_mapping=1
+
+" ---nerdTree in Explorer mappping
+let g:netrw_liststyle=3  
+nnoremap <Leader>nn :edit .<CR>
+nnoremap <Leader>nr :Explore<CR>
+nnoremap <Leader>ns :split .<CR>
+nnoremap <Leader>nv :vsplit .<CR>
+nnoremap <Leader>nt :tabnew<CR>:e.<CR>
+nnoremap <Leader>w <c-w><c-w>
+
+" ---set window size
+noremap <C-j> :resize +5<CR>
+noremap <C-k> :resize -5<CR>
+noremap <C-h> :vertical resize -5<CR>
+noremap <C-l> :vertical resize +5<CR>
 
 " <one click complier c++>
 " F9 save-complier-run
@@ -147,8 +156,8 @@ set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " ---set quitfix map
-map <C-j> <ESC>:cnext<CR>
-map <C-k> <ESC>:cprev<CR>
+"map <C-j> <ESC>:cnext<CR>
+"map <C-k> <ESC>:cprev<CR>
 
 " jslint
 let g:JSLintHighlightErrorLine = 0
