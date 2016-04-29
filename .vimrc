@@ -177,8 +177,9 @@ silent !stty -ixon
 
 " -- set person mapping use mac
 inoremap jk <ESC>
-noremap <C-a> ggVG
-noremap <C-s> :wq<CR> :echo "Saved"<CR>
-inoremap <expr> n ((pumvisible())?("\<C-n>"):("n"))
-inoremap <expr> m ((pumvisible())?("\<C-p>"):("m"))
+nnoremap <C-a> ggVG
+nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 
+" -- set buffer mapping
+nnoremap <Leader>bb :bnext<CR>
+nnoremap <Leader>bp :bprev<CR>
