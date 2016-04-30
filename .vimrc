@@ -186,3 +186,15 @@ noremap <C-k> :resize -5<CR>
 noremap <C-h> :vertical resize -5<CR>
 noremap <C-l> :vertical resize +5<CR>
 
+" ---quit and save file
+nmap <Leader>w :w!<CR>
+nmap <Leader>q :q!<CR>
+
+" ---global search
+nnoremap <Leader>g :call Global_Search()<CR>
+
+function! Global_Search()
+  let search_word = input('Enter target: ')
+  let dir = input('Enter Directory: ')
+  execute "vimgrep " . search_word . "  " . dir  
+endfunction
