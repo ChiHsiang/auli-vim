@@ -187,7 +187,7 @@ noremap <C-h> :vertical resize -5<CR>
 noremap <C-l> :vertical resize +5<CR>
 
 " ---quit and save file
-nmap <Leader>w :w!<CR>
+nmap <Leader>s :w!<CR>
 nmap <Leader>q :q!<CR>
 
 " ---global search
