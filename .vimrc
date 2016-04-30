@@ -112,21 +112,6 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldevel=1
 let g:vim_markdown_no_default_key_mapping=1
 
-" ---nerdTree in Explorer mappping
-let g:netrw_liststyle=3  
-nnoremap <Leader>nn :edit .<CR>
-nnoremap <Leader>nr :Explore<CR>
-nnoremap <Leader>ns :split .<CR>
-nnoremap <Leader>nv :vsplit .<CR>
-nnoremap <Leader>nt :tabnew<CR>:e.<CR>
-nnoremap <Leader>w <c-w><c-w>
-
-" ---set window size
-noremap <C-j> :resize +5<CR>
-noremap <C-k> :resize -5<CR>
-noremap <C-h> :vertical resize -5<CR>
-noremap <C-l> :vertical resize +5<CR>
-
 " <one click complier c++>
 " F9 save-complier-run
 map <F9> :call CompileRunGpp()<CR>
@@ -156,11 +141,11 @@ set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " ---set quitfix map
-"map <C-j> <ESC>:cnext<CR>
-"map <C-k> <ESC>:cprev<CR>
-
-" jslint
-let g:JSLintHighlightErrorLine = 0
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprev<CR>
+nnoremap <Leader>cw :copen<CR>
+nnoremap <Leader>cc :cclose<CR>
+nnoremap <Leader>cl :call setqflist([])<CR>
 
 " ---set easymontion ex: nmap s <Plug>(easymotion-s)
 map  / <Plug>(easymotion-sn)
@@ -181,5 +166,23 @@ nnoremap <C-a> ggVG
 nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 
 " -- set buffer mapping
-nnoremap <Leader>bb :bnext<CR>
+nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprev<CR>
+nnoremap <Leader>bl :buffers<CR>
+
+" ---nerdTree in Explorer mappping
+let g:netrw_liststyle=3  
+nnoremap <Leader>nn :edit .<CR>
+nnoremap <Leader>nr :Explore<CR>
+nnoremap <Leader>ns :split .<CR>
+nnoremap <Leader>nv :vsplit .<CR>
+nnoremap <Leader>nt :tabnew<CR>:e.<CR>
+nnoremap <Leader>w <c-w><c-w>
+nnoremap <C-]> gt
+
+" ---set window size
+noremap <C-j> :resize +5<CR>
+noremap <C-k> :resize -5<CR>
+noremap <C-h> :vertical resize -5<CR>
+noremap <C-l> :vertical resize +5<CR>
+
