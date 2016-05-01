@@ -43,19 +43,17 @@ call vundle#rc()
   Plugin 'opengl.vim'
 
   Plugin 'JulesWang/css.vim'
-  "Plugin 'cakebaker/scss-syntax.vim'
 
   Plugin 'bling/vim-airline'
-  "Plugin 'kchmck/vim-coffee-script'
 
   Plugin 'moll/vim-node'
-  "Plugin 'hallettj/jslint.vim'
 
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-surround'
-  "Plugin 'Valloric/YouCompleteMe'
 
   Plugin 'terryma/vim-multiple-cursors'
+  Plugin 'terryma/vim-expand-region'
+  Plugin 'junegunn/vim-easy-align'
 
 " General
 
@@ -162,6 +160,7 @@ silent !stty -ixon
 
 " -- set person mapping use mac
 inoremap jk <ESC>
+vnoremap jk <ESC>
 nnoremap <C-a> ggVG
 nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 
@@ -198,3 +197,17 @@ function! Global_Search()
   let dir = input('Enter Directory: ')
   execute "vimgrep " . search_word . "  " . dir  
 endfunction
+
+" ---set select 
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
+" ---set easy align
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+  let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
+
