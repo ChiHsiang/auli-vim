@@ -178,6 +178,7 @@ nnoremap <Leader>nv :vsplit .<CR>
 nnoremap <Leader>nt :tabnew<CR>:e.<CR>
 nnoremap <Leader>w <c-w><c-w>
 nnoremap <C-]> gt
+nnoremap <C-[> gT
 
 " ---set window size
 noremap <C-j> :resize +5<CR>
