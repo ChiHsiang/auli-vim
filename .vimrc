@@ -90,6 +90,9 @@ set fileencoding=utf-8
 " status Line
 set laststatus=2
 
+" set ctags path
+set tags=$HOME/tags
+
 " vim code Fold
 let mapleader = ","
 let g:ctrlp_map = '<Leader>.'
@@ -98,8 +101,8 @@ let g:ctrlp_map = '<Leader>.'
 let g:gitgutter_enabled = 1
 highlight clear SignCloumn " For the same appearance as your Line number column
 
-" --- tagbar
-nmap <F1> :TagbarToggle<CR>
+" --tarbar
+nmap <F8> :TagbarToggle<CR>
 
 " ---ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
@@ -168,6 +171,10 @@ nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprev<CR>
 nnoremap <Leader>bl :buffers<CR>
+
+" -- set ctags go to define
+nnoremap gd <C-]>
+"nnoremap gd :execute "vertical ptag " . expand("<cword>")<CR>
 
 " ---nerdTree in Explorer mappping
 let g:netrw_liststyle=3  
