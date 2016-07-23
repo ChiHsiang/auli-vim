@@ -102,7 +102,7 @@ let g:gitgutter_enabled = 1
 highlight clear SignCloumn " For the same appearance as your Line number column
 
 " --tarbar
-nmap <F8> :TagbarToggle<CR>
+nmap \\ :TagbarToggle<CR>
 
 " ---ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
