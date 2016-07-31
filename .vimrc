@@ -55,6 +55,8 @@ call vundle#rc()
   Plugin 'terryma/vim-expand-region'
   Plugin 'junegunn/vim-easy-align'
 
+  Plugin 'hdima/python-syntax'
+
 " General
 
 filetype plugin indent on " enable filetype-specific plugins 
@@ -217,5 +219,8 @@ if !exists('g:easy_align_delimiters')
   let g:easy_align_delimiters = {}
 endif
 let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
+" --set python highlight
+let Python3Syntax = 1
 
 
