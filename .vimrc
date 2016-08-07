@@ -180,14 +180,15 @@ nnoremap gd <C-]>
 
 " ---nerdTree in Explorer mappping
 let g:netrw_liststyle=3  
-nnoremap <Leader>nn :edit .<CR>
-nnoremap <Leader>nr :Explore<CR>
-nnoremap <Leader>ns :split .<CR>
-nnoremap <Leader>nv :vsplit .<CR>
-nnoremap <Leader>nt :tabnew<CR>:e.<CR>
+nnoremap <Leader>nn :Explore<CR>
+nnoremap <Leader>nr :Rexplore<CR>
+nnoremap <Leader>nh :Hexplore<CR>
+nnoremap <Leader>nv :Vexplore<CR>
+nnoremap <Leader>nt :Texplore<CR>
 nnoremap <Leader>w <c-w><c-w>
 nnoremap <C-]> gt
 nnoremap <C-[> gT
+nnoremap <Leader>d :Lexplore<CR> 
 
 " ---set window size
 noremap <C-j> :resize +5<CR>
