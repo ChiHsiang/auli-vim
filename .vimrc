@@ -34,7 +34,7 @@ call vundle#rc()
   Plugin 'Townk/vim-autoclose'
   Plugin 'kien/ctrlp.vim'
   Plugin 'majutsushi/tagbar'
-  Plugin 'tomtom/tcomment_vim'
+  "Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-fugitive'
   Plugin 'honza/vim-snippets'
   Plugin 'garbas/vim-snipmate'
