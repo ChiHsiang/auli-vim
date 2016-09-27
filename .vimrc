@@ -164,8 +164,6 @@ nmap s <Plug>(easymotion-s2)
 silent !stty -ixon
 
 " -- set person mapping use mac
-inoremap jk <ESC>
-vnoremap jk <ESC>
 nnoremap <C-a> ggVG
 nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 
@@ -224,4 +222,5 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 " --set python highlight
 let Python3Syntax = 1
 
-
+" --set insert fast key
+imap <C-l> <C-O>o
