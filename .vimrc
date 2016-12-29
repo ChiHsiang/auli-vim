@@ -56,6 +56,8 @@ call vundle#rc()
   Plugin 'junegunn/vim-easy-align'
 
   Plugin 'hdima/python-syntax'
+  Plugin 'rizzatti/dash.vim'
+  Plugin 'ntpeters/vim-better-whitespace'
 
 " General
 
@@ -93,7 +95,7 @@ set fileencoding=utf-8
 set laststatus=2
 
 " set ctags path
-set tags=$HOME/tags
+set tags=./tags;/,$HOME/tags/tags;/
 
 " vim code Fold
 let mapleader = ","
@@ -111,6 +113,8 @@ let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_show_hidden = 1
 
 " ---markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:vim_markdown_math = 1
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldevel=1
 let g:vim_markdown_no_default_key_mapping=1
@@ -174,7 +178,7 @@ nnoremap <Leader>bl :buffers<CR>
 
 " -- set ctags go to define
 nnoremap gd <C-]>
-"nnoremap gd :execute "vertical ptag " . expand("<cword>")<CR>
+nnoremap gb <C-T>
 
 " ---nerdTree in Explorer mappping
 let g:netrw_liststyle=3  
@@ -185,8 +189,6 @@ nnoremap <Leader>nv :Vexplore<CR>
 nnoremap <Leader>nt :Texplore<CR>
 nnoremap <Leader>w <c-w><c-w>
 nnoremap <C-]> gt
-nnoremap <C-[> gT
-nnoremap <Leader>d :Lexplore<CR> 
 
 " ---set window size
 noremap <C-j> :resize +5<CR>
@@ -224,3 +226,10 @@ let Python3Syntax = 1
 
 " --set insert fast key
 imap <C-l> <C-O>o
+
+imap jk <ESC>
+
+" -- set real-time preview markdown
+let g:instant_markdown_open_to_the_world = 1
+
+
