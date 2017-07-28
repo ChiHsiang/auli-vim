@@ -58,10 +58,11 @@ call vundle#rc()
   Plugin 'hdima/python-syntax'
   Plugin 'rizzatti/dash.vim'
   Plugin 'ntpeters/vim-better-whitespace'
+  Plugin 'scrooloose/syntastic'
 
 " General
 
-filetype plugin indent on " enable filetype-specific plugins 
+filetype plugin indent on " enable filetype-specific plugins
 filetype plugin on        " enable Loading the plugin files for specific file types
 filetype indent on	  " enable Loading the indent for specific file types
 set history=50 		  " keep 50 Lines of command Line history
@@ -73,7 +74,7 @@ set shiftwidth=2	  " the number of space characters inserted for indentation
 syntax on	  " enable syntax hightlighting
 colorscheme Tomorrow-Night-Eighties
 set autoread		  " auto read when file is change from outside
-set noswapfile    " don't produce .swp 
+set noswapfile    " don't produce .swp
 
 
 if has("gui_running")     " GUI color and font settings
@@ -181,7 +182,7 @@ nnoremap gd <C-]>
 nnoremap gb <C-T>
 
 " ---nerdTree in Explorer mappping
-let g:netrw_liststyle=3  
+let g:netrw_liststyle=3
 nnoremap <Leader>nn :Explore<CR>
 nnoremap <Leader>nr :Rexplore<CR>
 nnoremap <Leader>nh :Hexplore<CR>
@@ -206,10 +207,10 @@ nnoremap <Leader>g :call Global_Search()<CR>
 function! Global_Search()
   let search_word = input('Enter target: ')
   let dir = input('Enter Directory: ')
-  execute "vimgrep " . search_word . "  " . dir  
+  execute "vimgrep " . search_word . "  " . dir
 endfunction
 
-" ---set select 
+" ---set select
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 
@@ -232,4 +233,13 @@ imap jk <ESC>
 " -- set real-time preview markdown
 let g:instant_markdown_open_to_the_world = 1
 
-
+" -- set syntastic hint
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
