@@ -59,6 +59,8 @@ call vundle#rc()
   Plugin 'rizzatti/dash.vim'
   Plugin 'ntpeters/vim-better-whitespace'
   Plugin 'scrooloose/syntastic'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'mxw/vim-jsx'
 
 " General
 
