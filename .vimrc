@@ -59,7 +59,9 @@ call vundle#rc()
   Plugin 'rizzatti/dash.vim'
   Plugin 'ntpeters/vim-better-whitespace'
   Plugin 'pangloss/vim-javascript'
-  Plugin 'mxw/vim-jsx'
+  Plugin 'fatih/vim-go'
+  Plugin 'SirVer/ultisnips'
+  Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " General
 
@@ -74,6 +76,7 @@ set tabstop=2		  " insert 2 spaces for a tab
 set shiftwidth=2	  " the number of space characters inserted for indentation
 syntax on	  " enable syntax hightlighting
 colorscheme Tomorrow-Night-Eighties
+"colorscheme molokai
 set autoread		  " auto read when file is change from outside
 set noswapfile    " don't produce .swp
 
@@ -233,3 +236,18 @@ imap jk <ESC>
 
 " -- set real-time preview markdown
 let g:instant_markdown_open_to_the_world = 1
+
+" --set go project file type
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_function_calls = 1
+let g:go_fmt_command = "goimports"
+imap <F12> <C-x><C-o>
