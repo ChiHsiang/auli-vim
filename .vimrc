@@ -62,6 +62,8 @@ call vundle#rc()
   Plugin 'fatih/vim-go'
   Plugin 'SirVer/ultisnips'
   Plugin 'nsf/gocode', {'rtp': 'vim/'}
+  Plugin 'ervandew/supertab'
+  Plugin 'mileszs/ack.vim'
 
 " General
 
@@ -101,6 +103,9 @@ set laststatus=2
 
 " set ctags path
 set tags=./tags;/,$HOME/tags/tags;/
+
+" set auto read
+set autoread
 
 " vim code Fold
 let mapleader = ","
@@ -205,15 +210,6 @@ noremap <C-l> :vertical resize +5<CR>
 nmap <Leader>s :w!<CR>
 nmap <Leader>q :q!<CR>
 
-" ---global search
-nnoremap <Leader>g :call Global_Search()<CR>
-
-function! Global_Search()
-  let search_word = input('Enter target: ')
-  let dir = input('Enter Directory: ')
-  execute "vimgrep " . search_word . "  " . dir
-endfunction
-
 " ---set select
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
@@ -250,4 +246,42 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_function_calls = 1
 let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = "camelcase"
 imap <F12> <C-x><C-o>
+nnoremap <C-b> :b 1<CR>
+let g:SuperTabDefaultCompletionType = "context"
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+" --set gotags
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+map <c-u> :Ack<space>
