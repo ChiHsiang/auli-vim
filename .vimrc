@@ -34,27 +34,19 @@ call vundle#rc()
   Plugin 'Townk/vim-autoclose'
   Plugin 'kien/ctrlp.vim'
   Plugin 'majutsushi/tagbar'
-  "Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-fugitive'
   Plugin 'honza/vim-snippets'
   Plugin 'garbas/vim-snipmate'
   Plugin 'Yggdroot/indentLine'
-
   Plugin 'opengl.vim'
-
   Plugin 'JulesWang/css.vim'
-
   Plugin 'bling/vim-airline'
-
   Plugin 'moll/vim-node'
-
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-surround'
-
   Plugin 'terryma/vim-multiple-cursors'
   Plugin 'terryma/vim-expand-region'
   Plugin 'junegunn/vim-easy-align'
-
   Plugin 'hdima/python-syntax'
   Plugin 'rizzatti/dash.vim'
   Plugin 'ntpeters/vim-better-whitespace'
@@ -227,7 +219,6 @@ let Python3Syntax = 1
 
 " --set insert fast key
 imap <C-l> <C-O>o
-
 imap jk <ESC>
 
 " -- set real-time preview markdown
