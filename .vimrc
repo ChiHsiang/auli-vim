@@ -276,3 +276,4 @@ let g:tagbar_type_go = {
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 map <c-u> :Ack<space>
+imap <DOWN> <c-x><c-o>
