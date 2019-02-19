@@ -121,31 +121,17 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldevel=1
 let g:vim_markdown_no_default_key_mapping=1
 
-" <one click complier c++>
-" F9 save-complier-run
-map <F9> :call CompileRunGpp()<CR>
-
-func! CompileRunGpp()
-  exec "w"
-  exec "!g++ % -o %<"
-  exec "! ./%<"
-endfunc
-
 " --- indentLine
 let g:indentLine_color_term = 239
 
-
 " ---set File type tab space
-
 autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab
 
 " ---set json-vim
-
 let g:vim_json_syntax_conceal = 0
 
 " ---set search highlight
-
 set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
@@ -163,7 +149,6 @@ map  m <Plug>(easymotion-prev)
 nmap s <Plug>(easymotion-s2)
 
 " ---set youcompleteme
-
 "let g:ycm_key_list_select_completion = ['<Down>', '<C-N>']
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
@@ -174,9 +159,9 @@ nnoremap <C-a> ggVG
 nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
 
 " -- set buffer mapping
-nnoremap <Leader>bn :bnext<CR>
-nnoremap <Leader>bp :bprev<CR>
-nnoremap <Leader>bl :buffers<CR>
+nnoremap <C-b>n :bnext<CR>
+nnoremap <C-b>p :bprev<CR>
+nnoremap <C-b>l :buffers<CR>
 
 " -- set ctags go to define
 nnoremap gd <C-]>
@@ -238,7 +223,6 @@ let g:go_highlight_fields = 1
 let g:go_highlight_function_calls = 1
 let g:go_fmt_command = "goimports"
 let g:go_addtags_transform = "camelcase"
-imap <F12> <C-x><C-o>
 nnoremap <C-b> :b 1<CR>
 let g:SuperTabDefaultCompletionType = "context"
 if !exists("g:UltiSnipsJumpForwardTrigger")
