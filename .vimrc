@@ -56,6 +56,7 @@ call vundle#rc()
   Plugin 'nsf/gocode', {'rtp': 'vim/'}
   Plugin 'ervandew/supertab'
   Plugin 'mileszs/ack.vim'
+  Plugin 'sebdah/vim-delve'
 
 " General
 
@@ -74,11 +75,12 @@ colorscheme Tomorrow-Night-Eighties
 set autoread		  " auto read when file is change from outside
 set noswapfile    " don't produce .swp
 
-
 if has("gui_running")     " GUI color and font settings
   set t_Co=256            " 256 color mode
 end
 
+set mouse=a
+set mousehide
 set clipboard=unnamed     " yank to the system register (*) by default
 set showmode		  " Show current mode
 set backspace=2		  " make backspace work Like most other apps
@@ -213,6 +215,12 @@ let g:instant_markdown_open_to_the_world = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+autocmd FileType go nmap <leader>co <Plug>(go-coverage)
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -261,3 +269,10 @@ let g:tagbar_type_go = {
 let g:ackprg = 'ag --nogroup --nocolor --column'
 map <c-u> :Ack<space>
 imap <DOWN> <c-x><c-o>
+
+" --vim-delve
+autocmd FileType go nmap <leader>dlb :DlvToggleBreakpoint<CR>
+autocmd FileType go nmap <leader>dlt :DlvToggleTracepoint<CR>
+autocmd FileType go nmap <leader>dlc :DlvClearAll<CR>
+autocmd FileType go nmap <leader>dd :DlvDebug<CR>
+autocmd FileType go nmap <leader>dt :DlvTest<CR>
