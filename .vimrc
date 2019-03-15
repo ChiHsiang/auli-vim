@@ -57,6 +57,7 @@ call vundle#rc()
   Plugin 'ervandew/supertab'
   Plugin 'mileszs/ack.vim'
   Plugin 'sebdah/vim-delve'
+  Plugin 'buoto/gotests-vim'
 
 " General
 
@@ -267,6 +268,9 @@ let g:tagbar_type_go = {
 \ }
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:go_metalinter_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "3s"
 map <c-u> :Ack<space>
 imap <DOWN> <c-x><c-o>
 
