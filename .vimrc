@@ -82,6 +82,12 @@ set backspace=2		  " make backspace work Like most other apps
 set cursorline
 set showmatch " Auto pair find brackets
 set wildmenu
+set ttyfast " Faster redraw
+set lazyredraw " Don't redraw statusline when switching between vim modes
+set shortmess=tsIAW " No intro when starting Vim
+
+" nerdTree styles
+let g:netrw_liststyle=3
 
 " encoding settings
 set encoding=utf-8
