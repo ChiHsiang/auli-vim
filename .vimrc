@@ -55,6 +55,9 @@ call vundle#rc()
   Plugin 'mileszs/ack.vim'
   Plugin 'sebdah/vim-delve'
   Plugin 'buoto/gotests-vim'
+  Plugin 'prabirshrestha/async.vim'
+  Plugin 'prabirshrestha/asyncomplete.vim'
+  Plugin 'prabirshrestha/asyncomplete-gocode.vim'
 
 " General
 if has("gui_running")     " GUI color and font settings
@@ -113,7 +116,6 @@ highlight clear SignCloumn " For the same appearance as your Line number column
 " ---ctrlp
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_show_hidden = 1
-
 
 " --- indentLine
 let g:indentLine_color_term = 239
@@ -179,6 +181,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:go_metalinter_enabled = ['vet', 'golint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "3s"
+
+" setting asyncomplete
+set completeopt+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " To auto close preview window when completion is done.
 
 """"""""""""""""""""""
 " Setting tab & space"
@@ -295,3 +301,18 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+" --set tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+
+""""""""""""""""""""""""""""""
+"  Language Server setting   "
+""""""""""""""""""""""""""""""
+call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
+    \ 'name': 'gocode',
+    \ 'whitelist': ['go'],
+    \ 'completor': function('asyncomplete#sources#gocode#completor'),
+    \ 'config': {
+    \    'gocode_path': expand('~/go/bin/gocode')
+    \  },
+    \ }))
