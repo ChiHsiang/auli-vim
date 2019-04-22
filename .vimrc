@@ -15,8 +15,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'Townk/vim-autoclose'
   Plug 'majutsushi/tagbar'
   Plug 'tpope/vim-fugitive'
-  Plug 'honza/vim-snippets'
-  Plug 'garbas/vim-snipmate'
   Plug 'Yggdroot/indentLine'
   Plug 'JulesWang/css.vim'
   Plug 'bling/vim-airline'
@@ -30,7 +28,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'pangloss/vim-javascript'
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  Plug 'nsf/gocode', {'rtp': 'vim/'}
   Plug 'ervandew/supertab'
   Plug 'mileszs/ack.vim'
   Plug 'sebdah/vim-delve'
