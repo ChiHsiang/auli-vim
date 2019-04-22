@@ -1,63 +1,46 @@
 " Vundle
 
 set nocompatible	" not compatible with the old-fashion vi mode"
-filetype off " required!
+filetype indent off " required
+syntax off
 
-" Setting up vundle - the vim plugin bundler
-
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle"
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Let Vundle manage Vundle
-" required!
-  Plugin 'gmarik/vundle'
-
+" Plug mg use vim-plug
 " My Plugins here:
-"
 " original repos on github
-
-  Plugin 'Lokaltog/vim-easymotion'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'MarcWeber/vim-addon-mw-utils'
-  Plugin 'tomtom/tlib_vim'
-  Plugin 'Townk/vim-autoclose'
-  Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'honza/vim-snippets'
-  Plugin 'garbas/vim-snipmate'
-  Plugin 'Yggdroot/indentLine'
-  Plugin 'JulesWang/css.vim'
-  Plugin 'bling/vim-airline'
-  Plugin 'moll/vim-node'
-  Plugin 'elzr/vim-json'
-  Plugin 'tpope/vim-surround'
-  Plugin 'terryma/vim-multiple-cursors'
-  Plugin 'terryma/vim-expand-region'
-  Plugin 'junegunn/vim-easy-align'
-  Plugin 'hdima/python-syntax'
-  Plugin 'rizzatti/dash.vim'
-  Plugin 'ntpeters/vim-better-whitespace'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'fatih/vim-go'
-  Plugin 'nsf/gocode', {'rtp': 'vim/'}
-  Plugin 'ervandew/supertab'
-  Plugin 'mileszs/ack.vim'
-  Plugin 'sebdah/vim-delve'
-  Plugin 'buoto/gotests-vim'
-  Plugin 'prabirshrestha/async.vim'
-  Plugin 'prabirshrestha/asyncomplete.vim'
-  Plugin 'prabirshrestha/asyncomplete-gocode.vim'
+call plug#begin("~/.vim/plugged")
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'MarcWeber/vim-addon-mw-utils'
+  Plug 'tomtom/tlib_vim'
+  Plug 'Townk/vim-autoclose'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'majutsushi/tagbar'
+  Plug 'tpope/vim-fugitive'
+  Plug 'honza/vim-snippets'
+  Plug 'garbas/vim-snipmate'
+  Plug 'Yggdroot/indentLine'
+  Plug 'JulesWang/css.vim'
+  Plug 'bling/vim-airline'
+  Plug 'moll/vim-node'
+  Plug 'elzr/vim-json'
+  Plug 'tpope/vim-surround'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'terryma/vim-expand-region'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'hdima/python-syntax'
+  Plug 'rizzatti/dash.vim'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'pangloss/vim-javascript'
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+  Plug 'nsf/gocode', {'rtp': 'vim/'}
+  Plug 'ervandew/supertab'
+  Plug 'mileszs/ack.vim'
+  Plug 'sebdah/vim-delve'
+  Plug 'buoto/gotests-vim'
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-gocode.vim'
+call plug#end()
 
 " General
 if has("gui_running")     " GUI color and font settings
