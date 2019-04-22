@@ -28,7 +28,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'pangloss/vim-javascript'
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   Plug 'ervandew/supertab'
-  Plug 'mileszs/ack.vim'
   Plug 'sebdah/vim-delve'
   Plug 'buoto/gotests-vim'
   Plug 'prabirshrestha/async.vim'
@@ -157,7 +156,6 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:go_metalinter_enabled = ['vet', 'golint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "3s"
@@ -184,73 +182,113 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 set timeoutlen=500
 " vim code Fold
-let mapleader = ","
-nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
-call which_key#register('<Space>', "g:which_key_map")
+let mapleader=","
+let g:maplocalleader = ","
+nnoremap <silent> <leader>           :<c-u>WhichKey ','<CR>
+nnoremap <silent> <localleader>      :<c-u>WhichKey ','<CR>
+let g:which_key_map = {}
 
+call which_key#register(',', "g:which_key_map")
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
 
-" --vim-delve
-autocmd FileType go nmap <leader>db :DlvToggleBreakpoint<CR>
-autocmd FileType go nmap <leader>dt :DlvToggleTracepoint<CR>
-autocmd FileType go nmap <leader>dc :DlvClearAll<CR>
-autocmd FileType go nmap <leader>dd :DlvDebug<CR>
-autocmd FileType go nmap <leader>dT :DlvTest<CR>
-
-" --Ack search
-map <c-u> :Ack<space>
-
-" --tarbar
-nmap \\ :TagbarToggle<CR>
-
-" ---set search highlight
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" ---set quitfix map
-nnoremap <Leader>cn :cnext<CR>
-nnoremap <Leader>cp :cprev<CR>
-nnoremap <Leader>cw :copen<CR>
-nnoremap <Leader>cc :cclose<CR>
-nnoremap <Leader>cl :call setqflist([])<CR>
-
-" ---set easymontion ex: nmap s <Plug>(easymotion-s)
-map  / <Plug>(easymotion-sn)
-map  n <Plug>(easymotion-next)
-map  m <Plug>(easymotion-prev)
-nmap s <Plug>(easymotion-s2)
-
-" -- set person mapping use mac
-nnoremap <C-a> ggVG
-nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
-
-" -- set buffer mapping
-nnoremap <C-b>n :bnext<CR>
-nnoremap <C-b>p :bprev<CR>
-nnoremap <C-b>l :buffers<CR>
-
-" -- set ctags go to define
-nnoremap gd <C-]>
-nnoremap gb <C-T>
-
-" ---nerdTree in Explorer mappping
+" ---nerdTree in Explorer mappping {{{
+let g:which_key_map['n'] = {
+      \ 'name': '+Explorer',
+      \ 'n': ['Explore', 'open-explore'],
+      \ 'r': ['Rexplore', 'r-explore'],
+      \ 'h': ['Hexplore', 'h-explore'],
+      \ 'v': ['Vexplore', 'v-explore'],
+      \ 't': ['Texplore', 'new-window-explore'],
+      \ 'w': ['<c-w><c-w>', 'focus-next-explore'],
+      \ ']': ['gt', 'toggle-window-explore'],
+      \ }
 nnoremap <Leader>nn :Explore<CR>
 nnoremap <Leader>nr :Rexplore<CR>
 nnoremap <Leader>nh :Hexplore<CR>
 nnoremap <Leader>nv :Vexplore<CR>
 nnoremap <Leader>nt :Texplore<CR>
-nnoremap <Leader>w <c-w><c-w>
-nnoremap <C-]> gt
+nnoremap <Leader>nw <c-w><c-w>
+nnoremap <Leader>n] gt
+" }}}
+
+" ---Delve mapping {{{
+let g:which_key_map['d'] = {
+      \ 'name': '+Delve',
+      \ 'b': ['DlvToggleBreakpoing', 'toggle-break-point'],
+      \ 't': ['DlvToggleTracepoint', 'toggle-trace-point'],
+      \ 'c': ['DlvClearAll', 'clear-all'],
+      \ 'd': ['DlvDebug', 'debug'],
+      \ 'T': ['DlvTest', 'test']
+      \ }
+autocmd FileType go nmap <leader>db :DlvToggleBreakpoint<CR>
+autocmd FileType go nmap <leader>dt :DlvToggleTracepoint<CR>
+autocmd FileType go nmap <leader>dc :DlvClearAll<CR>
+autocmd FileType go nmap <leader>dd :DlvDebug<CR>
+autocmd FileType go nmap <leader>dT :DlvTest<CR>
+" }}}
+
+" --tarbar
+let g:which_key_map['t'] = ["TagbarToggle", 'Tagbar']
+nnoremap <leader>t :TagbarToggle<CR>
+
+" ---set search highlight
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" ---set quitfix map {{{
+let g:which_key_map['c'] = {
+      \ 'name': '+QuickFix',
+      \ 'n': ['cnext<CR>', 'next'],
+      \ 'p': ['cprev<CR>', 'prev'],
+      \ 'w': ['copen<CR>', 'open'],
+      \ 'c': ['cclose<CR>', 'close'],
+      \ 'l': ['call setqflist([])<CR>', 'clear'],
+      \ }
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprev<CR>
+nnoremap <Leader>cw :copen<CR>
+nnoremap <Leader>cc :cclose<CR>
+nnoremap <Leader>cl :call setqflist([])<CR>
+" }}}
+
+"" ---set easymontion ex: nmap s <Plug>(easymotion-s) {{{
+map  / <Plug>(easymotion-sn)
+map  n <Plug>(easymotion-next)
+map  m <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s2)
+" }}}
+
+"" -- set person mapping use mac
+nnoremap <c-a> ggVG
+nnoremap <C-s> :wq<CR> :echo "Saved"<CR>
+
+" -- set buffer mapping {{{
+let g:which_key_map['b'] = {
+      \ 'name': '+Buffers',
+      \ 'n': ['bnext', 'next'],
+      \ 'p': ['bprev', 'prev'],
+      \ 'l': ['buffers', 'buffers'],
+      \ }
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprev<CR>
+nnoremap <leader>bl :buffers<CR>
+" ---}}}
+
+" -- set ctags go to define
+nnoremap gd <C-]>
+nnoremap gb <C-T>
 
 " ---set window size
-noremap <C-j> :resize +5<CR>
-noremap <C-k> :resize -5<CR>
-noremap <C-h> :vertical resize -5<CR>
-noremap <C-l> :vertical resize +5<CR>
+nnoremap <C-j> :resize +5<CR>
+nnoremap <C-k> :resize -5<CR>
+nnoremap <C-h> :vertical resize -5<CR>
+nnoremap <C-l> :vertical resize +5<CR>
 
 " ---quit and save file
-nmap <Leader>s :w!<CR>
-nmap <Leader>q :q!<CR>
+let g:which_key_map['s'] = ['w\!', 'save-file']
+let g:which_key_map['q'] = ['q\!', 'quit-file']
+nnoremap <Leader>s :w!<CR>
+nnoremap <Leader>q :q!<CR>
 
 " ---set select
 vmap v <Plug>(expand_region_expand)
@@ -285,6 +323,19 @@ let g:multi_cursor_quit_key            = '<Esc>'
 
 " --set tab completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+
+" ---help folding {{{
+let g:which_key_map['z'] = {
+      \ 'name': '+Help Folding',
+      \ 'a': ['open/close fold', 'open/close-fold'],
+      \ 'c': ['close current open fold', 'close-current-fold'],
+      \ 'o': ['open current fold', 'open-current-fold'],
+      \ 'm': ['close all fold', 'close-all-fold'],
+      \ 'r': ['open all fold', 'open-all-fold'],
+      \ 'j': ['jump next fold', 'jump-next-fold'],
+      \ 'k': ['jump prev fold', 'jump-prev-fold'],
+      \ }
+"  }}}
 
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
