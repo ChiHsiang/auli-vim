@@ -13,17 +13,14 @@ call plug#begin("~/.vim/plugged")
   Plug 'majutsushi/tagbar'
   Plug 'tpope/vim-fugitive'
   Plug 'Yggdroot/indentLine'
-  Plug 'JulesWang/css.vim'
   Plug 'bling/vim-airline'
   Plug 'moll/vim-node'
   Plug 'elzr/vim-json'
   Plug 'tpope/vim-surround'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'terryma/vim-expand-region'
-  Plug 'hdima/python-syntax'
   Plug 'rizzatti/dash.vim'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'pangloss/vim-javascript'
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   Plug 'ervandew/supertab'
   Plug 'sebdah/vim-delve'
@@ -35,6 +32,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'wsdjeg/FlyGrep.vim'
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " General
