@@ -34,6 +34,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'jiangmiao/auto-pairs'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+  Plug 'wsdjeg/FlyGrep.vim'
 call plug#end()
 
 " General
@@ -92,10 +93,6 @@ set tags=./tags;/,$HOME/tags/tags;/
 
 " set auto read
 set autoread
-
-" --- vim-gitgutter
-let g:gitgutter_enabled = 1
-highlight clear SignCloumn " For the same appearance as your Line number column
 
 " --- indentLine
 let g:indentLine_color_term = 239
@@ -160,6 +157,9 @@ let g:go_metalinter_deadline = "3s"
 " setting asyncomplete
 set completeopt+=preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " To auto close preview window when completion is done.
+
+" set flygrep
+let g:spacevim_debug_level = 0
 
 """"""""""""""""""""""
 " Setting tab & space"
@@ -339,6 +339,12 @@ let g:which_key_map['z'] = {
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" --set flygrep
+
+let g:which_key_map['f'] = ["FlyGrep", 'flygrep']
+nnoremap <leader>f :FlyGrep<CR>
+
 
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
