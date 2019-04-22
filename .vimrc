@@ -13,7 +13,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'MarcWeber/vim-addon-mw-utils'
   Plug 'tomtom/tlib_vim'
   Plug 'Townk/vim-autoclose'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'majutsushi/tagbar'
   Plug 'tpope/vim-fugitive'
   Plug 'honza/vim-snippets'
@@ -26,7 +25,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'tpope/vim-surround'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'terryma/vim-expand-region'
-  Plug 'junegunn/vim-easy-align'
   Plug 'hdima/python-syntax'
   Plug 'rizzatti/dash.vim'
   Plug 'ntpeters/vim-better-whitespace'
@@ -95,10 +93,6 @@ set autoread
 " --- vim-gitgutter
 let g:gitgutter_enabled = 1
 highlight clear SignCloumn " For the same appearance as your Line number column
-
-" ---ctrlp
-let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_show_hidden = 1
 
 " --- indentLine
 let g:indentLine_color_term = 239
@@ -186,7 +180,6 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " vim code Fold
 let mapleader = ","
-let g:ctrlp_map = '<Leader>.'
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
@@ -255,10 +248,6 @@ nmap <Leader>q :q!<CR>
 " ---set select
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
-
-" ---set easy align
-vmap <Leader>a <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
 
 " --set insert fast key
 imap <C-l> <C-O>o
