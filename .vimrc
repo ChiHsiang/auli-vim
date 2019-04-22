@@ -1,5 +1,3 @@
-" Vundle
-
 set nocompatible	" not compatible with the old-fashion vi mode"
 filetype indent off " required
 syntax off
@@ -8,6 +6,7 @@ syntax off
 " My Plugins here:
 " original repos on github
 call plug#begin("~/.vim/plugged")
+  Plug 'liuchengxu/vim-which-key'
   Plug 'Lokaltog/vim-easymotion'
   Plug 'airblade/vim-gitgutter'
   Plug 'MarcWeber/vim-addon-mw-utils'
@@ -66,6 +65,13 @@ set wildmenu
 set ttyfast " Faster redraw
 set lazyredraw " Don't redraw statusline when switching between vim modes
 set shortmess=tsIAW " No intro when starting Vim
+
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+"}}}
 
 " multi cursor
 let g:multi_cursor_use_default_mapping=0
@@ -171,22 +177,26 @@ autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab
 " --set go project file type
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
-""""""""""""""""""""""
-"    Mapping Key     "
-""""""""""""""""""""""
+"=======================================================
+"            Mapping Key use vim-which-key             "
+"     Create menus based on existing mappings
+"=======================================================
 
+set timeoutlen=500
 " vim code Fold
 let mapleader = ","
+nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
+call which_key#register('<Space>', "g:which_key_map")
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
 
 " --vim-delve
-autocmd FileType go nmap <leader>dlb :DlvToggleBreakpoint<CR>
-autocmd FileType go nmap <leader>dlt :DlvToggleTracepoint<CR>
-autocmd FileType go nmap <leader>dlc :DlvClearAll<CR>
+autocmd FileType go nmap <leader>db :DlvToggleBreakpoint<CR>
+autocmd FileType go nmap <leader>dt :DlvToggleTracepoint<CR>
+autocmd FileType go nmap <leader>dc :DlvClearAll<CR>
 autocmd FileType go nmap <leader>dd :DlvDebug<CR>
-autocmd FileType go nmap <leader>dt :DlvTest<CR>
+autocmd FileType go nmap <leader>dT :DlvTest<CR>
 
 " --Ack search
 map <c-u> :Ack<space>
@@ -251,6 +261,7 @@ imap <C-l> <C-O>o
 imap jk <ESC>
 
 " --set go filetype map
+" Go File mapping setting ------ {{{
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
@@ -260,6 +271,7 @@ autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 autocmd FileType go nmap <leader>co <Plug>(go-coverage)
 nnoremap <C-b> :b 1<CR>
+"}}}
 
 " --set multi cursor
 let g:multi_cursor_start_word_key      = '<C-n>'
@@ -277,11 +289,3 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
 """"""""""""""""""""""""""""""
-call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
-    \ 'name': 'gocode',
-    \ 'whitelist': ['go'],
-    \ 'completor': function('asyncomplete#sources#gocode#completor'),
-    \ 'config': {
-    \    'gocode_path': expand('~/go/bin/gocode')
-    \  },
-    \ }))
