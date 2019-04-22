@@ -8,10 +8,8 @@ syntax off
 call plug#begin("~/.vim/plugged")
   Plug 'liuchengxu/vim-which-key'
   Plug 'Lokaltog/vim-easymotion'
-  Plug 'airblade/vim-gitgutter'
   Plug 'MarcWeber/vim-addon-mw-utils'
   Plug 'tomtom/tlib_vim'
-  Plug 'Townk/vim-autoclose'
   Plug 'majutsushi/tagbar'
   Plug 'tpope/vim-fugitive'
   Plug 'Yggdroot/indentLine'
@@ -33,6 +31,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-gocode.vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 call plug#end()
 
 " General
@@ -105,15 +106,10 @@ let g:vim_json_syntax_conceal = 0
 " ---set search highlight
 set hlsearch
 
-" ---set easy align
-if !exists('g:easy_align_delimiters')
-  let g:easy_align_delimiters = {}
-endif
-let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
-
 " --set python highlight
 let Python3Syntax = 1
 
+" ---Setting Golang {{{
 " --set go project file type
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -159,6 +155,7 @@ let g:tagbar_type_go = {
 let g:go_metalinter_enabled = ['vet', 'golint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "3s"
+"---}}}
 
 " setting asyncomplete
 set completeopt+=preview
@@ -337,6 +334,20 @@ let g:which_key_map['z'] = {
       \ }
 "  }}}
 
+" --set ultisnip
+"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
 """"""""""""""""""""""""""""""
+call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
+    \ 'name': 'gocode',
+    \ 'whitelist': ['go'],
+    \ 'completor': function('asyncomplete#sources#gocode#completor'),
+    \ 'config': {
+    \    'gocode_path': expand('~/go/bin/gocode')
+    \  },
+    \ }))
