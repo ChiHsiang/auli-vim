@@ -14,6 +14,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'tpope/vim-fugitive'
   Plug 'Yggdroot/indentLine'
   Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'moll/vim-node'
   Plug 'elzr/vim-json'
   Plug 'tpope/vim-surround'
@@ -178,6 +179,11 @@ endif
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" --set airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
 
 "=======================================================
 "                 Setting tab & space                  "
