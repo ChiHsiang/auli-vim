@@ -34,6 +34,12 @@ call plug#begin("~/.vim/plugged")
   Plug 'wsdjeg/FlyGrep.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+  Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+  if executable('ctags')
+    Plug 'prabirshrestha/asyncomplete-tags.vim'
+    Plug 'ludovicchabant/vim-gutentags'
+  endif
 call plug#end()
 
 " General
@@ -161,9 +167,21 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " To auto close pr
 let g:spacevim_debug_level = 0
 let g:spacevim_search_highlight_persist = 1
 
-""""""""""""""""""""""
-" Setting tab & space"
-""""""""""""""""""""""
+" --set gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+"=======================================================
+"                 Setting tab & space                  "
+"=======================================================
 
 " ---set File type tab space
 autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab
@@ -345,6 +363,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:which_key_map['g'] = ["FlyGrep", 'flygrep']
 nnoremap <leader>g :FlyGrep<CR>
 
+" --set leaderF
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
@@ -355,5 +375,22 @@ call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options
     \ 'completor': function('asyncomplete#sources#gocode#completor'),
     \ 'config': {
     \    'gocode_path': expand('~/go/bin/gocode')
+    \  },
+    \ }))
+
+if has('python3')
+  call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+      \ 'name': 'ultisnips',
+      \ 'whitelist': ['*'],
+      \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+      \ }))
+endif
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tags#get_source_options({
+    \ 'name': 'tags',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#tags#completor'),
+    \ 'config': {
+    \    'max_file_size': 50000000,
     \  },
     \ }))
