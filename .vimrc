@@ -33,6 +33,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'honza/vim-snippets'
   Plug 'wsdjeg/FlyGrep.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 call plug#end()
 
 " General
@@ -158,6 +159,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " To auto close pr
 
 " set flygrep
 let g:spacevim_debug_level = 0
+let g:spacevim_search_highlight_persist = 1
 
 """"""""""""""""""""""
 " Setting tab & space"
@@ -340,8 +342,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " --set flygrep
 
-let g:which_key_map['f'] = ["FlyGrep", 'flygrep']
-nnoremap <leader>f :FlyGrep<CR>
+let g:which_key_map['g'] = ["FlyGrep", 'flygrep']
+nnoremap <leader>g :FlyGrep<CR>
 
 
 """"""""""""""""""""""""""""""
