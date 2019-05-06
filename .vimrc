@@ -40,6 +40,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'posva/vim-vue', { 'for': ['vue'] }
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
+  Plug 'prabirshrestha/asyncomplete-buffer.vim'
 
   if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'
@@ -432,6 +433,13 @@ if executable('vls')
     au FileType vue setlocal omnifunc=lsp#complete
   augroup end
 endif
+
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
 
 """"""""""""""""""""""""""""""
 "  AutoCmd filetype setting   "
