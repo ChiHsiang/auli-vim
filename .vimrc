@@ -39,6 +39,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'posva/vim-vue', { 'for': ['vue'] }
   Plug 'junegunn/vim-easy-align'
+  Plug 'tpope/vim-surround'
 
   if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'
