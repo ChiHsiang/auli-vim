@@ -28,7 +28,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'buoto/gotests-vim'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-gocode.vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
@@ -36,6 +35,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'sheerun/vim-polyglot'
   Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
   Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'posva/vim-vue', { 'for': ['vue'] }
 
   if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'
@@ -372,17 +374,19 @@ nnoremap <leader>g :FlyGrep<CR>
 " --set leaderF
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 
+" --set asynccomplete force refresh completion
+imap <C-x><C-u> <Plug>(asyncomplete_force_refresh)
+
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
 """"""""""""""""""""""""""""""
-call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
-    \ 'name': 'gocode',
-    \ 'whitelist': ['go'],
-    \ 'completor': function('asyncomplete#sources#gocode#completor'),
-    \ 'config': {
-    \    'gocode_path': expand('~/go/bin/gocode')
-    \  },
-    \ }))
+if executable('go-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'go-langserver',
+        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
 
 if has('python3')
   call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
@@ -400,3 +404,31 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \    'max_file_size': 50000000,
     \  },
     \ }))
+
+if executable('vls')
+  augroup LspVls
+    au!
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vue-language-server',
+        \ 'cmd': {server_info->['vls']},
+        \ 'whitelist': ['vue'],
+        \ 'initialization_options': {
+        \         'config': {
+        \             'html': {},
+        \              'vetur': {
+        \                  'validation': {}
+        \              }
+        \         }
+        \     }
+        \ })
+
+    " omnifunc
+    au FileType vue setlocal omnifunc=lsp#complete
+  augroup end
+endif
+
+""""""""""""""""""""""""""""""
+"  AutoCmd filetype setting   "
+""""""""""""""""""""""""""""""
+
+autocmd FileType vue syntax sync fromstart
