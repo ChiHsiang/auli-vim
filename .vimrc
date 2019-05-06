@@ -38,6 +38,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'posva/vim-vue', { 'for': ['vue'] }
+  Plug 'junegunn/vim-easy-align'
 
   if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'
@@ -376,6 +377,9 @@ let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 
 " --set asynccomplete force refresh completion
 imap <C-x><C-u> <Plug>(asyncomplete_force_refresh)
+
+" -- easy-align
+xmap <Leader>a <Plug>(EasyAlign)
 
 """"""""""""""""""""""""""""""
 "  Language Server setting   "
