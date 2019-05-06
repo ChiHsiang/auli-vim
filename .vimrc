@@ -165,7 +165,8 @@ let g:go_metalinter_deadline = "3s"
 "---}}}
 
 " setting asyncomplete
-set completeopt+=preview
+set completeopt-=preview
+let g:asyncomplete_auto_popup = 0
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " To auto close preview window when completion is done.
 
 " set flygrep
